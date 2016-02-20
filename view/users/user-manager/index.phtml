@@ -1,0 +1,23 @@
+<?php
+$output = "<tr><td>Имя<td>
+			<td>Email</td>
+			<td></td>
+		   </tr>";
+foreach($this->users as $user){
+	$output.="<tr>
+		<td>$user->name</td>
+		<td>$user->email</td>
+		<td>
+			<a href='/users/user-manager/edit/$user->id'>Изменить</a>
+			 | 
+			<a href='/users/user-manager/delete/$user->id'>Удалить</a>
+		</td>
+	</tr>";
+}
+?>
+<section>
+<h2>Пользователи</h2>
+<table class="table table-hover">
+	<?php print $output; ?>
+</table>
+</section>

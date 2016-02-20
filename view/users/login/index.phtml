@@ -1,0 +1,40 @@
+<section class="login">
+<h2>Вход в систему</h2>
+<?php if ($this->error): ?>
+<p class="error">
+Форма заполнена с ошибками. <br> Нет аккаунта? <a href="/users/register">Зарегистрироваться</a>
+</p>
+<?php endif; ?>
+
+<?php
+	$form = $this->form;
+	$form->prepare();
+	$form->setAttribute('action', $this->url(NULL, 
+	array('controller' => 'Login', 'action' => 'process')));
+	$form->setAttribute('method', 'post');
+	print $this->form()->openTag($form);
+
+?>
+<dl class="zend_form">
+<dt><?php print $this->formLabel($form->get('email')); ?></dt>
+<dd><?php 
+	print $this->formElement($form->get('email')); 
+	print $this->formElementErrors($form->get('email'));
+?></dd>
+<dt><?php print $this->formLabel($form->get('password')); ?></dt>
+<dd><?php
+	print $this->formElement($form->get('password'));
+	print $this->formElementErrors($form->get('password'));
+?></dd>
+<dd><?php
+	print $this->formElement($form->get('submit'));
+	print $this->formElementErrors($form->get('submit'));
+?></dd>
+
+</dl>
+
+<?php 
+	print $this->form()->closeTag();
+	?>
+
+</section>
